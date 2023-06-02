@@ -1,0 +1,979 @@
+#define btn_rising  2     
+#define btn_falling 3
+
+#define displayA  9  //A
+#define displayB 10 //B
+#define displayC  6 //C
+#define displayD  5 //D
+#define displayE  4 //E
+#define displayF  8 //F
+#define displayG  7 //G
+//DISPLAY 2
+#define display2A 11  //A
+#define display2B 12  //B
+#define display2C 13  //C
+#define display2D 14  //D
+#define display2E 15  //E
+#define display2F 16  //F
+#define display2G 17  //G
+int contador = 0;
+void setup(){
+  Serial.begin(9600);//Iniciar el monitor serial
+  pinMode(btn_rising, INPUT);  //pin 2 como entrada
+  pinMode(btn_falling, INPUT); //pin 3 como entrada
+  //Configuramos los pines para el display como salida
+  pinMode(displayA,OUTPUT);
+  pinMode(displayB,OUTPUT);
+  pinMode(displayC,OUTPUT);
+  pinMode(displayD,OUTPUT);
+  pinMode(displayE,OUTPUT);
+  pinMode(displayF,OUTPUT);
+  pinMode(displayG,OUTPUT);
+  //Configuramos los pines para el display2 como salida
+  pinMode(display2A,OUTPUT);
+  pinMode(display2B,OUTPUT);
+  pinMode(display2C,OUTPUT);
+  pinMode(display2D,OUTPUT);
+  pinMode(display2E,OUTPUT);
+  pinMode(display2F,OUTPUT);
+  pinMode(display2G,OUTPUT);
+}
+void loop(){
+  if(digitalRead(btn_rising)){//Cuando se presione el boton contador progresivo
+    contador++;// contador = contador + 1;
+    //Limitar variable contador
+    if(contador >50){
+      contador =0;
+    }
+    Serial.println(contador);//Presentar el contador en el monitor serial
+    delay(500);
+  }
+  if(digitalRead(btn_falling)){//cuando se presione el boton contador regresivo
+    contador--;//contador = contado - 1;
+    //Limitar variable contador
+    if(contador <0){
+      contador = 50;
+    }
+    Serial.println(contador);//Presentar en el monitor serial
+    delay(50);//Retardo
+  }
+  switch(contador){
+    case 0:
+      //cero();
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, HIGH);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, LOW);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 1:
+      //uno();
+        digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 2:
+      //dos();
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, LOW);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, HIGH);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 3:
+      //tres();
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 4:
+      //cuatro();
+        digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 5:
+      //cinco();
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, LOW);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 6:
+      //seis();
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, LOW);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, HIGH);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 7:
+      //siete();
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 8:
+      //ocho();
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, HIGH);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+    case 9:
+      //nueve();
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+    //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+         case 10:
+      //diez();
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, LOW);
+      break;
+       case 11:
+      //ONCE();
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+      case 12:
+      //doce 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+      break;
+      case 13:
+      //trece
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+      break;
+      case 14:
+      //catorce
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;case 15:
+      //quince
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+      case 16:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 17:
+      //diecisiete
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 18:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 19:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, LOW);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 20:
+      //dieciseis 
+      digitalWrite(displayA,  HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, LOW);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, HIGH);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, LOW);
+      break;
+ case 21:
+      //dieciseis 
+      digitalWrite(displayA,  HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, LOW);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, HIGH);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 22:
+      //dieciseis 
+    digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 23:
+      //dieciseis 
+     digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 24:
+      //dieciseis 
+     digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 25:
+      //dieciseis 
+       digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 26:
+      //dieciseis 
+      digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 27:
+      //dieciseis 
+       digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+          digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 28:
+      //dieciseis 
+      digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 29:
+      //dieciseis 
+     digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 30:
+      //dieciseis 
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, LOW);
+      break;
+ case 31:
+      //dieciseis 
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 32:
+      //dieciseis 
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 33:
+      //dieciseis 
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+      break;
+ case 34:
+      //dieciseis 
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+       digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 35:
+      //dieciseis 
+        digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 36:
+      //dieciseis 
+       digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 37:
+      //dieciseis 
+       digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 38:
+      //dieciseis 
+     digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+     digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 39:
+      //dieciseis 
+     digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 40:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 41:
+      //dieciseis 
+     digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 42:
+      //dieciseis 
+     digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, LOW);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 43:
+      //dieciseis 
+     digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+         digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, LOW);
+        digitalWrite(displayG, HIGH);
+      break;
+ case 44:
+      //dieciseis 
+     digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+      break;
+ case 45:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 46:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, LOW);
+        digitalWrite(display2B, LOW);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 47:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);;
+        //DISPLAY 2 
+         digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, LOW);
+        digitalWrite(display2G, LOW);
+      break;
+ case 48:
+      //dieciseis 
+      digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+      digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 49:
+      //dieciseis 
+   digitalWrite(displayA, LOW);
+        digitalWrite(displayB, HIGH);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, LOW);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, LOW);
+        digitalWrite(display2E, LOW);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, HIGH);
+      break;
+ case 50:
+      //dieciseis 
+      digitalWrite(displayA, HIGH);
+        digitalWrite(displayB, LOW);
+        digitalWrite(displayC, HIGH);
+        digitalWrite(displayD, HIGH);
+        digitalWrite(displayE, LOW);
+        digitalWrite(displayF, HIGH);
+        digitalWrite(displayG, HIGH);
+        //DISPLAY 2 
+        digitalWrite(display2A, HIGH);
+        digitalWrite(display2B, HIGH);
+        digitalWrite(display2C, HIGH);
+        digitalWrite(display2D, HIGH);
+        digitalWrite(display2E, HIGH);
+        digitalWrite(display2F, HIGH);
+        digitalWrite(display2G, LOW);
+      break;
+  }
+}

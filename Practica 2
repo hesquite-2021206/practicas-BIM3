@@ -1,0 +1,27 @@
+#define poten A5
+
+#define led 5 
+
+int inten;
+
+int direc;
+
+void setup() {
+
+  pinMode(led, OUTPUT);
+
+  pinMode(poten, OUTPUT);
+
+}
+
+void loop() {
+
+  Serial.begin(9600);
+
+  inten = analogRead(poten);
+
+  direc = map(inten, 0,1023,0,255);
+
+  analogWrite(led, direc);
+
+}

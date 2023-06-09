@@ -1,0 +1,60 @@
+/*
+Fundacion Kinal
+Centro Educativo Tecnico Laboral Kinal
+Electronica
+Grado: Quinto
+Seccion: A
+Curso: Taller de electronica digital y reparacion de computadoras 1
+Nombre: Henry Abraham Esquite Matheu
+Carne: 2021206
+*/
+
+#include<LiquidCrystal_I2C.h>
+#include <Wire.h> 
+#define direccion_lcd 0x3F
+#define filas 2
+#define columnas 16
+#define divisor A3
+int medicion_resistencia();
+
+LiquidCrystal_I2C lcd_Henry(direccion_lcd, columnas, filas);
+
+
+void setup() {
+  Serial.begin(96000);
+  lcd_Henry.init();
+  lcd_Henry.backlight();
+  pinMode(divisor,INPUT);
+}
+  void loop() {
+    lcd_Henry.setCursor(0,0);
+  lcd_Henry.print("valor resistencia: ");
+  lcd_Henry.setCursor(0,1);
+  unsigned long int ohms = medicion_resistencia();
+   lcd_Henry.setCursor(0,1);
+  lcd_Henry.print(ohms);
+  lcd_Henry.print(" ohms         ");
+  }
+  
+int medicion_resistencia(){
+int medida = 0;
+float Resistencia2 = 0;   
+int voltaje_entrada = 5;  
+float VoltajeR2 = 0;    
+float Resistencia1 = 10000;            
+float relacion = 0;
+  medida = analogRead(divisor);
+if(medida) //Si detecta una resistencia
+  {
+    relacion = medida * voltaje_entrada;  
+    VoltajeR2 = (relacion)/1024.0;  
+  relacion = (voltaje_entrada/VoltajeR2)-1 ;    
+    Resistencia2= (Resistencia1 * relacion)-20;  
+    Serial.print("Resistancia: ");
+    Serial.println(Resistencia2);
+    return Resistencia2;
+  } else {   //Si no detecta una resistencia
+    Serial.println("Conecta una resistencia");
+    return 0;
+    }
+}

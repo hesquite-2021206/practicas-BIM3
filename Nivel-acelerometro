@@ -1,0 +1,163 @@
+#include <Wire.h>
+#include <SparkFun_ADXL345.h>
+#include <LedControl.h>
+
+ADXL345 Acelerometro;
+LedControl Matriz = LedControl(12, 11, 10, 1); // Pines DIN, CLK, LOAD de la matriz LED
+
+byte Izquierda[8] = {
+  0b11011011,
+  0b11011011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011
+};
+
+byte Izquierda1[8] = {
+  0b11000011,
+  0b11011011,
+  0b11011011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011
+};
+
+byte Izquierda2[8] = {
+  0b11000011,
+  0b11000011,
+  0b11011011,
+  0b11011011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011
+};
+
+byte Centro[8] = {
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11011011,
+  0b11011011,
+  0b11000011,
+  0b11000011,
+  0b11000011
+};
+
+byte Derecha2[8] = {
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11011011,
+  0b11011011,
+  0b11000011,
+  0b11000011
+};
+
+byte Derecha1[8] = {
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11011011,
+  0b11011011,
+  0b11000011
+};
+
+byte Derecha[8] = {
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11000011,
+  0b11011011,
+  0b11011011
+};
+
+void setup() {
+  Serial.begin(9600);
+  Acelerometro.powerOn();
+  Acelerometro.setRangeSetting(4);
+  Matriz.shutdown(0, false);
+  Matriz.setIntensity(0, 5);
+  Matriz.clearDisplay(0);
+}
+
+void loop() {
+  int x, y, z;
+  Acelerometro.readAccel(&x, &y, &z);
+  Serial.println(x);
+
+  if (x < -100) {
+    AnimacionIzquierda();
+  } else if (x < -70) {
+    AnimacionIzquierda1();
+  } else if (x < -40) {
+    AnimacionIzquierda2();
+  } else if (x > 40 && x < 70) {
+    AnimacionDerecha2();
+  } else if (x > 70 && x < 100) {
+    AnimacionDerecha1();
+  } else if (x > 100) {
+    AnimacionDerecha();
+  } else {
+    AnimacionCentro();
+  }
+}
+
+void AnimacionIzquierda() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Izquierda[i]);
+  }
+  delay(100);
+}
+
+void AnimacionIzquierda1() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Izquierda1[i]);
+  }
+  delay(100);
+}
+
+void AnimacionIzquierda2() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Izquierda2[i]);
+  }
+  delay(100);
+}
+
+void AnimacionCentro() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Centro[i]);
+  }
+  delay(300);
+}
+
+void AnimacionDerecha() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Derecha[i]);
+  }
+  delay(100);
+}
+
+void AnimacionDerecha1() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Derecha1[i]);
+  }
+  delay(100);
+}
+
+void AnimacionDerecha2() {
+  for (int i = 0; i < 8; i++) {
+    Matriz.setRow(0, i, Derecha2[i]);
+  }
+  delay(100);
+}
